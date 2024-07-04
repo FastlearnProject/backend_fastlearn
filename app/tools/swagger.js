@@ -1,6 +1,5 @@
 import swaggerAutogen from 'swagger-autogen';
 
-
 const doc = {
   info: {
     title: 'FastLearn API',
@@ -45,7 +44,5 @@ const doc = {
 
 const outputFile = './swagger-output.json';
 const routes = ['../routes/routes.main.js', '../routes/routes.user.js'];
-
-
 
 swaggerAutogen()(outputFile, routes, doc);
