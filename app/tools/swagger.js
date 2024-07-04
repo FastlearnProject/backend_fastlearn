@@ -1,15 +1,13 @@
-import { config } from 'dotenv';
 import swaggerAutogen from 'swagger-autogen';
-config();
 
-let backend = process.env.BACKEND || 3000;
 
 const doc = {
   info: {
-    title: 'API FASTLEARN',
-    description: 'Gestion de usuarios'
+    title: 'FastLearn API',
+    description: 'API documentation for FastLearn',
   },
-  host: backend
+  host: 'backend-fastlearn.onrender.com',
+  schemes: ['http', 'https'],
 };
 
 const outputFile = './swagger-output.json';
