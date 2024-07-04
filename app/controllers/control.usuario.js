@@ -3,51 +3,42 @@ import jwt from "jsonwebtoken";
 import conexion from "../config/db.config.js";
 
 export const crearusuario = async (req, res) => {
-  const { nombre, correo, contrasenaPlain, fechaNacimiento, telefono } =
-    req.body;
+  const { nombre, correo, contrasenaPlain, fechaNacimiento, telefono } = req.body;
+
+  // Validar los datos de entrada
+  if (!nombre || !correo || !contrasenaPlain || !fechaNacimiento || !telefono) {
+    return res.status(400).json({ message: "Todos los campos son obligatorios" });
+  }
 
   try {
+    // Hashear la contraseña
     const contrasenaHash = await bcrypt.hash(contrasenaPlain, 10);
 
+    // Ejecutar el procedimiento almacenado
     const respuesta = await conexion.query(
       `CALL sp_insertarusuario(?, ?, ?, ?, ?, ?, ?)`,
-      [
-        nombre,
-        correo,
-        contrasenaHash,
-        fechaNacimiento,
-        "null",
-        "null",
-        telefono,
-      ]
+      [nombre, correo, contrasenaHash, fechaNacimiento, null, null, telefono]
     );
 
-    if (respuesta[0][0]) {
+    // Verificar la respuesta del procedimiento almacenado
+    if (respuesta[0] && respuesta[0][0] && respuesta[0][0].id_usuario) {
       const usuario = respuesta[0][0];
-      const idUsuario = usuario[0].id_usuario;
-      const payload = {
-        id_usuario: idUsuario,
-        nombre: nombre,
-        correo: correo,
-      };
+      const idUsuario = usuario.id_usuario;
+      const payload = { id_usuario: idUsuario, nombre, correo };
 
+      // Generar el token
       const token = jwt.sign(payload, process.env.TOKEN_PRIVATEKEY, {
         expiresIn: process.env.TOKEN_EXPIRES_IN,
       });
 
-      return res
-        .status(201)
-        .json({ message: "Usuario creado exitosamente", token });
+      return res.status(201).json({ message: "Usuario creado exitosamente", token });
     } else {
+      console.error("No se pudo crear el usuario, respuesta de la base de datos:", respuesta);
       return res.status(200).json({ message: "No se pudo crear el usuario" });
     }
   } catch (err) {
     console.error("Error al crear usuario:", err);
-    return res
-      .status(500)
-      .json({
-        message: "Error en el servidor, por favor intentalo de nuevo más tarde",
-      });
+    return res.status(500).json({ message: "Error en el servidor, por favor intentalo de nuevo más tarde" });
   }
 };
 
