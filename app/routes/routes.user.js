@@ -8,7 +8,7 @@ rutaUser.post("/usuario", crearusuario);
 rutaUser.post("/login", logueoUsuario);
 
 rutaUser.get("/usuario", verifyToken, mostrarusuarios);
-rutaUser.get("/usuario/:id", mostrarusuario);
+rutaUser.get("/usuario/:id", verifyToken, mostrarusuario);
 
 rutaUser.put("/usuario/:id", verifyToken, modificarusuario);
 rutaUser.put("/rol", verifyToken, modificarRolUsuario);

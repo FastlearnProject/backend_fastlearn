@@ -152,14 +152,16 @@ export const modificarRolUsuario = async (req, res) => {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
   } catch (err) {
-    console.error("Error al actualizar el rol:", err);
+    console.error("Error al actualizar el rol:", err); // Loguea el error detallado
     return res
       .status(500)
       .json({
         message: "Error en el servidor, por favor intentalo de nuevo más tarde",
+        error: err.message, // Agrega el mensaje de error a la respuesta
       });
   }
 };
+
 
 export const eliminarusuario = async (req, res) => {
   const id = req.params.id;

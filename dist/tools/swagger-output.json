@@ -89,6 +89,11 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "apply(this",
+            "in": "header",
+            "type": "string"
           }
         ],
         "responses": {

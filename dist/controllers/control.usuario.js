@@ -235,9 +235,10 @@ var modificarRolUsuario = exports.modificarRolUsuario = /*#__PURE__*/function ()
         case 22:
           _context5.prev = 22;
           _context5.t0 = _context5["catch"](3);
-          console.error("Error al actualizar el rol:", _context5.t0);
+          console.error("Error al actualizar el rol:", _context5.t0); // Loguea el error detallado
           return _context5.abrupt("return", res.status(500).json({
-            message: "Error en el servidor, por favor intentalo de nuevo más tarde"
+            message: "Error en el servidor, por favor intentalo de nuevo más tarde",
+            error: _context5.t0.message // Agrega el mensaje de error a la respuesta
           }));
         case 26:
         case "end":
