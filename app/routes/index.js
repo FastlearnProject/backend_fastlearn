@@ -11,12 +11,6 @@ const ruta = Router();
 ruta.use("/", rutaMain);
 ruta.use("/", rutaUser);
 ruta.use("/", rutaCursos);
-ruta.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile, {
-    swaggerOptions: {
-        docExpansion: "none", // Configura cómo se muestra la documentación
-        defaultModelsExpandDepth: -1, // Configura la profundidad de expansión de los modelos
-    },
-    customCss: ".swagger-ui .topbar { display: none }",
-}));
+ruta.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 export default ruta;

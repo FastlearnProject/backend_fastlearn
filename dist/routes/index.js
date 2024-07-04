@@ -15,12 +15,5 @@ var ruta = (0, _express.Router)();
 ruta.use("/", _routesMain["default"]);
 ruta.use("/", _routesUser["default"]);
 ruta.use("/", _routesCourses["default"]);
-ruta.use("/doc", _swaggerUiExpress["default"].serve, _swaggerUiExpress["default"].setup(_swaggerOutput["default"], {
-  swaggerOptions: {
-    docExpansion: "none",
-    // Configura cómo se muestra la documentación
-    defaultModelsExpandDepth: -1 // Configura la profundidad de expansión de los modelos
-  },
-  customCss: ".swagger-ui .topbar { display: none }"
-}));
+ruta.use("/doc", _swaggerUiExpress["default"].serve, _swaggerUiExpress["default"].setup(_swaggerOutput["default"]));
 var _default = exports["default"] = ruta;
