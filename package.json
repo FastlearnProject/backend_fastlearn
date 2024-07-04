@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app/index.js --exec babel-node",
-    "build": "babel app --out-dir dist",
-    "start": "node dist/index.js",
     "swaggerdev": "node ./app/tools/swagger.js",
-    "swagger": "node ./dist/tools/swagger.js"
+    "build": "babel app --out-dir dist",
+    "swagger": "node ./dist/tools/swagger.js",
+    "start": "node dist/index.js"
   },
   "author": "Agustin, Ayelen y Juan",
   "license": "ISC",
