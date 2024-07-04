@@ -6,7 +6,7 @@ const doc = {
     title: 'API FASTLEARN',
     description: 'Gestion de usuarios'
   },
-  host: "https://backend-fastlearn.onrender.com/" + ""
+  host: "https://backend-fastlearn.onrender.com" + ""
 };
 
 const outputFile = './swagger-output.json';

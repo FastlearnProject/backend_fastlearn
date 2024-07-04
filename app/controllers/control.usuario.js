@@ -16,8 +16,8 @@ export const crearusuario = async (req, res) => {
 
     // Ejecutar el procedimiento almacenado
     const respuesta = await conexion.query(
-      `CALL sp_insertarusuario(?, ?, ?, ?, ?, ?, ?)`,
-      [nombre, correo, contrasenaHash, fechaNacimiento, null, null, telefono]
+      `CALL sp_insertarusuario(?, ?, ?, 'null', 'null', ?, ?)`,
+      [nombre, correo, contrasenaHash, fechaNacimiento, telefono]
     );
 
     // Verificar la respuesta del procedimiento almacenado
