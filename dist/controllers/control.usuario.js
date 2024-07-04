@@ -17,27 +17,35 @@ var crearusuario = exports.crearusuario = /*#__PURE__*/function () {
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          _req$body = req.body, nombre = _req$body.nombre, correo = _req$body.correo, contrasenaPlain = _req$body.contrasenaPlain, fechaNacimiento = _req$body.fechaNacimiento, telefono = _req$body.telefono;
-          _context.prev = 1;
-          _context.next = 4;
+          _req$body = req.body, nombre = _req$body.nombre, correo = _req$body.correo, contrasenaPlain = _req$body.contrasenaPlain, fechaNacimiento = _req$body.fechaNacimiento, telefono = _req$body.telefono; // Validar los datos de entrada
+          if (!(!nombre || !correo || !contrasenaPlain || !fechaNacimiento || !telefono)) {
+            _context.next = 3;
+            break;
+          }
+          return _context.abrupt("return", res.status(400).json({
+            message: "Todos los campos son obligatorios"
+          }));
+        case 3:
+          _context.prev = 3;
+          _context.next = 6;
           return _bcrypt["default"].hash(contrasenaPlain, 10);
-        case 4:
+        case 6:
           contrasenaHash = _context.sent;
-          _context.next = 7;
-          return _dbConfig["default"].query("CALL sp_insertarusuario(?, ?, ?, ?, ?, ?, ?)", [nombre, correo, contrasenaHash, fechaNacimiento, "null", "null", telefono]);
-        case 7:
+          _context.next = 9;
+          return _dbConfig["default"].query("CALL sp_insertarusuario(?, ?, ?, ?, ?, ?, ?)", [nombre, correo, contrasenaHash, fechaNacimiento, null, null, telefono]);
+        case 9:
           respuesta = _context.sent;
-          if (!respuesta[0][0]) {
-            _context.next = 16;
+          if (!(respuesta[0] && respuesta[0][0] && respuesta[0][0].id_usuario)) {
+            _context.next = 18;
             break;
           }
           usuario = respuesta[0][0];
-          idUsuario = usuario[0].id_usuario;
+          idUsuario = usuario.id_usuario;
           payload = {
             id_usuario: idUsuario,
             nombre: nombre,
             correo: correo
-          };
+          }; // Generar el token
           token = _jsonwebtoken["default"].sign(payload, process.env.TOKEN_PRIVATEKEY, {
             expiresIn: process.env.TOKEN_EXPIRES_IN
           });
@@ -45,25 +53,26 @@ var crearusuario = exports.crearusuario = /*#__PURE__*/function () {
             message: "Usuario creado exitosamente",
             token: token
           }));
-        case 16:
+        case 18:
+          console.error("No se pudo crear el usuario, respuesta de la base de datos:", respuesta);
           return _context.abrupt("return", res.status(200).json({
             message: "No se pudo crear el usuario"
           }));
-        case 17:
-          _context.next = 23;
+        case 20:
+          _context.next = 26;
           break;
-        case 19:
-          _context.prev = 19;
-          _context.t0 = _context["catch"](1);
+        case 22:
+          _context.prev = 22;
+          _context.t0 = _context["catch"](3);
           console.error("Error al crear usuario:", _context.t0);
           return _context.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor intentalo de nuevo más tarde"
           }));
-        case 23:
+        case 26:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[1, 19]]);
+    }, _callee, null, [[3, 22]]);
   }));
   return function crearusuario(_x, _x2) {
     return _ref.apply(this, arguments);

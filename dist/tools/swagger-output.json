@@ -5,7 +5,7 @@
     "description": "Gestion de usuarios",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://backend-fastlearn.onrender.com/",
   "basePath": "/",
   "schemes": [
     "http"
@@ -31,6 +31,9 @@
           "201": {
             "description": "Created"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -46,8 +49,11 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -77,16 +83,17 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "apply(this",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -106,8 +113,14 @@
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
