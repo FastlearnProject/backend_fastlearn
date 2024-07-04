@@ -6,7 +6,7 @@ const doc = {
     description: 'API documentation for FastLearn',
   },
   host: 'backend-fastlearn.onrender.com',
-  schemes: ['http', 'https'],
+  schemes: ['https'],
   securityDefinitions: {
     bearerAuth: {
       type: 'apiKey',
@@ -16,33 +16,9 @@ const doc = {
       bearerFormat: 'JWT',
     },
   },
-  definitions: {
-    User: {
-      type: 'object',
-      properties: {
-        name: { type: 'string', example: 'John Doe' },
-        email: { type: 'string', example: 'john.doe@example.com' },
-        password: { type: 'string', example: 'password123' },
-      },
-    },
-    Login: {
-      type: 'object',
-      properties: {
-        email: { type: 'string', example: 'john.doe@example.com' },
-        password: { type: 'string', example: 'password123' },
-      },
-    },
-    Role: {
-      type: 'object',
-      properties: {
-        id: { type: 'string', example: 'correo' },
-        role: { type: 'string', example: 'student' },
-      },
-    },
-  },
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['../routes/routes.main.js', '../routes/routes.user.js'];
+const routes = ['../routes/routes.main.js', '../routes/routes.user.js', '../routes/routes.courses.js'];
 
 swaggerAutogen()(outputFile, routes, doc);

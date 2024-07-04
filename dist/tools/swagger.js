@@ -8,7 +8,7 @@ var doc = {
     description: 'API documentation for FastLearn'
   },
   host: 'backend-fastlearn.onrender.com',
-  schemes: ['http', 'https'],
+  schemes: ['https'],
   securityDefinitions: {
     bearerAuth: {
       type: 'apiKey',
@@ -17,53 +17,8 @@ var doc = {
       scheme: 'bearer',
       bearerFormat: 'JWT'
     }
-  },
-  definitions: {
-    User: {
-      type: 'object',
-      properties: {
-        name: {
-          type: 'string',
-          example: 'John Doe'
-        },
-        email: {
-          type: 'string',
-          example: 'john.doe@example.com'
-        },
-        password: {
-          type: 'string',
-          example: 'password123'
-        }
-      }
-    },
-    Login: {
-      type: 'object',
-      properties: {
-        email: {
-          type: 'string',
-          example: 'john.doe@example.com'
-        },
-        password: {
-          type: 'string',
-          example: 'password123'
-        }
-      }
-    },
-    Role: {
-      type: 'object',
-      properties: {
-        id: {
-          type: 'string',
-          example: 'correo'
-        },
-        role: {
-          type: 'string',
-          example: 'student'
-        }
-      }
-    }
   }
 };
 var outputFile = './swagger-output.json';
-var routes = ['../routes/routes.main.js', '../routes/routes.user.js'];
+var routes = ['../routes/routes.main.js', '../routes/routes.user.js', '../routes/routes.courses.js'];
 (0, _swaggerAutogen["default"])()(outputFile, routes, doc);
