@@ -31,9 +31,22 @@ export const mostrarCursos = async (req, res) => {
     const respuesta = await conexion.query(`CALL sp_mostrarcursos()`);
     return res.status(200).json(respuesta[0]);
   } catch (error) {
-    console.error("Error al mostrar usuarios:", err);
+    console.error("Error al mostrar cursos:", err);
     return res.status(500).json({
       message: "Error en el servidor, por favor intentalo de nuevo más tarde",
     });
   }
 };
+
+
+export const mostrarCursosFree = async(req, res) =>{
+  try {
+    const respuesta = await conexion.query(`CALL sp_mostrarcursos()`);
+    return res.status(200).json(respuesta[0]);
+  } catch (error) {
+    console.error("Erorr al mostrar cursos: ", err);
+    return res.status(500).json({
+      message: "Error en el servidor, por favor intentalo de nuevo más tarde",
+    })
+  }
+}
