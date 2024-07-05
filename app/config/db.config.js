@@ -9,9 +9,9 @@ const conexion = createPool({
     password: process.env.MYSQLPASSWORD || "basedatos_fl",
     port: process.env.MYSQLPORT || 3306,
     database: process.env.MYSQLDATABASE || "basedatos_fl",
-    waitForConnections: process.env.WAIT || true,
-    connectionLimit: process.env.WAIT || 10,
-    queueLimit: process.env.QUEUE || 0
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 })
 
 export default conexion;
