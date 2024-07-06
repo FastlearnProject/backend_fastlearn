@@ -8,11 +8,12 @@ config();
 
 /**
  * Configuaración y creación de Express.
+ * 
  * @type {object}
  */
 const app = express();
 
-// Middleware para tener en cuenta el JSON.
+// Middleware para tener en cuenta el JSON..
 app.use(express.json());
 
 // Middleware para tener en cuenta URL-encoded.
