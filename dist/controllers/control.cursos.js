@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mostrarCursos = exports.insertarCurso = void 0;
+exports.mostrarCursosFree = exports.mostrarCursos = exports.insertarCurso = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
@@ -68,7 +68,7 @@ var mostrarCursos = exports.mostrarCursos = /*#__PURE__*/function () {
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.error("Error al mostrar usuarios:", err);
+          console.error("Error al mostrar cursos:", err);
           return _context2.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor intentalo de nuevo más tarde"
           }));
@@ -80,5 +80,34 @@ var mostrarCursos = exports.mostrarCursos = /*#__PURE__*/function () {
   }));
   return function mostrarCursos(_x3, _x4) {
     return _ref2.apply(this, arguments);
+  };
+}();
+var mostrarCursosFree = exports.mostrarCursosFree = /*#__PURE__*/function () {
+  var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
+    var respuesta;
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return _dbConfig["default"].query("CALL sp_mostrarcursos()");
+        case 3:
+          respuesta = _context3.sent;
+          return _context3.abrupt("return", res.status(200).json(respuesta[0]));
+        case 7:
+          _context3.prev = 7;
+          _context3.t0 = _context3["catch"](0);
+          console.error("Erorr al mostrar cursos: ", err);
+          return _context3.abrupt("return", res.status(500).json({
+            message: "Error en el servidor, por favor intentalo de nuevo más tarde"
+          }));
+        case 11:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3, null, [[0, 7]]);
+  }));
+  return function mostrarCursosFree(_x5, _x6) {
+    return _ref3.apply(this, arguments);
   };
 }();

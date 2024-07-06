@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { insertarCurso, mostrarCursos } from "../controllers/control.cursos";
+import {verifyToken} from "../middlewares/oauth"
+import { insertarCurso, mostrarCursos, mostrarCursosFree } from "../controllers/control.cursos";
 
 /**
  * Se utiliza el Express Router para manejar las rutas de los cursos.
@@ -23,5 +24,8 @@ rutaCursos.get("/cursos", mostrarCursos);
  * @function
  */
 rutaCursos.post("/cursos", insertarCurso);
+rutaCursos.get("/cursos", verifyToken, mostrarCursos);
+rutaCursos.get("/cursos-free", mostrarCursosFree);
+rutaCursos.post("/cursos", verifyToken, insertarCurso);
 
 export default rutaCursos;
