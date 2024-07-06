@@ -1,5 +1,9 @@
 import swaggerAutogen from 'swagger-autogen';
 
+/**
+ * Configuración de la documentación de la API.
+ * @type {object}
+ */
 const doc = {
   info: {
     title: 'FastLearn API',
@@ -18,7 +22,19 @@ const doc = {
   },
 };
 
+/**
+ *  Ruta de salida para el archivo generado por swagger-autogen.
+ * @type {string}
+ */
 const outputFile = './swagger-output.json';
+
+/**
+ * Lista de rutas a ser incluidas en la documentación.
+ * @type {Array<string>}
+ */
 const routes = ['../routes/routes.main.js', '../routes/routes.user.js', '../routes/routes.courses.js'];
 
+/**
+ * Generar la documentación con ayuda de Swagger.
+ */
 swaggerAutogen()(outputFile, routes, doc);

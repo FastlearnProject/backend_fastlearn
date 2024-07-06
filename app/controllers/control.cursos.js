@@ -1,6 +1,16 @@
+/**
+ * Este es el controlador de cursos
+ * @module ctr-cursos
+ */
 import conexion from "../config/db.config.js";
 
-export const insertarCurso = async (req, res) => {
+/**
+ * Con esta función se crean o insertan los apartados de los cursos.
+ * @param {object} req Pide la información a ingresar, Imagen, Nombre, Descripción, Link y tags.
+ * @param {object} res Envía la información necesaria ingresada.
+ * 
+ */
+ const insertarCurso = async (req, res) => {
     const { imgCurso, nomCurso, desCurso, linkCurso, tagsCurso } = req.body;
   
     try {
@@ -25,8 +35,14 @@ export const insertarCurso = async (req, res) => {
     }
   };
   
-
-export const mostrarCursos = async (req, res) => {
+  /**
+   * Esto muestra los cursos creados a partir de la función "insertarCurso"
+   * 
+   * @param {Object} req captura peticiones en HTML
+   * @param {Object} res  envia peticiones en HTML
+   *
+   */
+ const mostrarCursos = async (req, res) => {
   try {
     const respuesta = await conexion.query(`CALL sp_mostrarcursos()`);
     return res.status(200).json(respuesta[0]);
@@ -37,3 +53,5 @@ export const mostrarCursos = async (req, res) => {
     });
   }
 };
+
+export {insertarCurso, mostrarCursos};

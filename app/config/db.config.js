@@ -3,6 +3,12 @@ import { config } from "dotenv";
 
 config();
 
+/**
+ * Conexión a la base de datos MySQL utilizando un pool de conexiones.
+ * 
+ * @type {Object}
+ * 
+ */
 const conexion = createPool({
     host: process.env.MYSQLHOST || "db4free.net",
     user: process.env.MYSQLUSER || "basedatos_fl",
