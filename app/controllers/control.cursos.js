@@ -54,9 +54,14 @@ import conexion from "../config/db.config.js";
   }
 };
 
-export {insertarCurso, mostrarCursos};
-
-export const mostrarCursosFree = async(req, res) =>{
+  /**
+   * Esto muestra los cursos
+   * 
+   * @param {Object} req captura peticiones en HTML
+   * @param {Object} res  envia peticiones en HTML
+   *
+   */
+ const mostrarCursosFree = async(req, res) =>{
   try {
     const respuesta = await conexion.query(`CALL sp_mostrarcursos()`);
     return res.status(200).json(respuesta[0]);
@@ -67,3 +72,5 @@ export const mostrarCursosFree = async(req, res) =>{
     })
   }
 }
+
+export {insertarCurso, mostrarCursos, mostrarCursosFree};

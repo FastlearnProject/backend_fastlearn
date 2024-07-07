@@ -24,8 +24,20 @@ rutaCursos.get("/cursos", mostrarCursos);
  * @function
  */
 rutaCursos.post("/cursos", insertarCurso);
-rutaCursos.get("/cursos", verifyToken, mostrarCursos);
+
+/**
+ * Ruta para mostrar cursos.
+ * @name get/cursos-free
+ * @memberof rutaCursos
+ * @function
+ */
 rutaCursos.get("/cursos-free", mostrarCursosFree);
+/**
+ * Ruta para incertar cursos y verificar token.
+ * @name post/cursos
+ * @memberof rutaCursos
+ * @function
+ */
 rutaCursos.post("/cursos", verifyToken, insertarCurso);
 
 export default rutaCursos;
