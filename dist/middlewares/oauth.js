@@ -11,6 +11,14 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 var _dotenv = require("dotenv");
 var _mensajes = require("../message/mensajes.js");
 (0, _dotenv.config)();
+
+/**
+ * Middleware para verificar el token (JWT).
+ * 
+ * @param {Object} req - El objeto de la solicitud.
+ * @param {Object} res - El objeto de la respuesta.
+ * @param {Function} next - La función next para pasar al siguiente middleware.
+ */
 var verifyToken = exports.verifyToken = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res, next) {
     var authHeader, token, valida;

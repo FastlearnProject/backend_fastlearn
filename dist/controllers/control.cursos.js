@@ -8,6 +8,17 @@ exports.mostrarCursosFree = exports.mostrarCursos = exports.insertarCurso = void
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
+/**
+ * Este es el controlador de cursos
+ * @module ctr-cursos
+ */
+
+/**
+ * Con esta función se crean o insertan los apartados de los cursos.
+ * @param {object} req Pide la información a ingresar, Imagen, Nombre, Descripción, Link y tags.
+ * @param {object} res Envía la información necesaria ingresada.
+ * 
+ */
 var insertarCurso = exports.insertarCurso = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var _req$body, imgCurso, nomCurso, desCurso, linkCurso, tagsCurso, respuesta, curso;
@@ -53,6 +64,14 @@ var insertarCurso = exports.insertarCurso = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+
+/**
+ * Esto muestra los cursos creados a partir de la función "insertarCurso"
+ * 
+ * @param {Object} req captura peticiones en HTML
+ * @param {Object} res  envia peticiones en HTML
+ *
+ */
 var mostrarCursos = exports.mostrarCursos = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
     var respuesta;
@@ -82,6 +101,14 @@ var mostrarCursos = exports.mostrarCursos = /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }();
+
+/**
+ * Esto muestra los cursos
+ * 
+ * @param {Object} req captura peticiones en HTML
+ * @param {Object} res  envia peticiones en HTML
+ *
+ */
 var mostrarCursosFree = exports.mostrarCursosFree = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
     var respuesta;

@@ -117,8 +117,8 @@ config();
  * @param {Object} res - Envía la información a la base de datos.
  */
  const modificarusuario = async (req, res) => {
+  const id = req.params['id']
   const {
-    id,
     nombre,
     correo,
     contrasenaPlain,
@@ -131,7 +131,7 @@ config();
     const contrasenaHash = await bcrypt.hash(contrasenaPlain, 10);
     const contrasena = contrasenaHash;
     const respuesta = await conexion.query(
-      `CALL sp_modificarusuario(${id}, '${nombre}', '${correo}', '${contrasena}', '${fechaNacimiento}', '${genero}', '${telefono}')`
+      `CALL sp_modificarusuario(${id},'${nombre}', '${correo}', '${contrasena}', '${fechaNacimiento}', '${genero}', '${telefono}')`
     );
 
     if (respuesta[0].affectedRows === 1) {

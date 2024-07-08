@@ -12,13 +12,26 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
 var _dotenv = require("dotenv");
+/**
+ * Este es el controlador de usuario
+ * @module ctr-usuario
+ */
+
 (0, _dotenv.config)();
+
+/**
+ * Crea un nuevo usuario en la base de datos.
+ * 
+ * @param {Object} req - Toma los datos necesarios para el registro del usuario.
+ * @param {Object} res - Envía los datos recibidos.
+ */
 var crearusuario = exports.crearusuario = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var _req$body, nombre, correo, contrasenaPlain, fechaNacimiento, telefono, contrasenaHash, respuesta, usuario, idUsuario, payload, token;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
+          //Captura todos los datos necesarios para el registro del usuario
           _req$body = req.body, nombre = _req$body.nombre, correo = _req$body.correo, contrasenaPlain = _req$body.contrasenaPlain, fechaNacimiento = _req$body.fechaNacimiento, telefono = _req$body.telefono;
           _context.prev = 1;
           _context.next = 4;
@@ -71,6 +84,12 @@ var crearusuario = exports.crearusuario = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
+/**
+ * Muestra la información de un usuario por su ID.
+ * 
+ * @param {Object} req - Recibe el parametro necesario.
+ * @param {Object} res - Envía la respuesta.
+ */
 var mostrarusuario = exports.mostrarusuario = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
     var id, respuesta;
@@ -112,6 +131,13 @@ var mostrarusuario = exports.mostrarusuario = /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }();
+
+/**
+ * Muestra la lista de todos los usuarios.
+ * 
+ * @param {Object} req - El objeto de la solicitud.
+ * @param {Object} res - El objeto de la respuesta.
+ */
 var mostrarusuarios = exports.mostrarusuarios = /*#__PURE__*/function () {
   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
     var respuesta;
@@ -141,54 +167,69 @@ var mostrarusuarios = exports.mostrarusuarios = /*#__PURE__*/function () {
     return _ref3.apply(this, arguments);
   };
 }();
+
+/**
+ * Modifica la información de un usuario existente.
+ * 
+ * @param {Object} req - Toma la información nueva.
+ * @param {Object} res - Envía la información a la base de datos.
+ */
 var modificarusuario = exports.modificarusuario = /*#__PURE__*/function () {
   var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
-    var _req$body2, id, nombre, correo, contrasenaPlain, fechaNacimiento, genero, telefono, contrasenaHash, contrasena, respuesta;
+    var id, _req$body2, nombre, correo, contrasenaPlain, fechaNacimiento, genero, telefono, contrasenaHash, contrasena, respuesta;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          _req$body2 = req.body, id = _req$body2.id, nombre = _req$body2.nombre, correo = _req$body2.correo, contrasenaPlain = _req$body2.contrasenaPlain, fechaNacimiento = _req$body2.fechaNacimiento, genero = _req$body2.genero, telefono = _req$body2.telefono;
-          _context4.prev = 1;
-          _context4.next = 4;
+          id = req.params['id'];
+          _req$body2 = req.body, nombre = _req$body2.nombre, correo = _req$body2.correo, contrasenaPlain = _req$body2.contrasenaPlain, fechaNacimiento = _req$body2.fechaNacimiento, genero = _req$body2.genero, telefono = _req$body2.telefono;
+          _context4.prev = 2;
+          _context4.next = 5;
           return _bcrypt["default"].hash(contrasenaPlain, 10);
-        case 4:
+        case 5:
           contrasenaHash = _context4.sent;
           contrasena = contrasenaHash;
-          _context4.next = 8;
-          return _dbConfig["default"].query("CALL sp_modificarusuario(".concat(id, ", '").concat(nombre, "', '").concat(correo, "', '").concat(contrasena, "', '").concat(fechaNacimiento, "', '").concat(genero, "', '").concat(telefono, "')"));
-        case 8:
+          _context4.next = 9;
+          return _dbConfig["default"].query("CALL sp_modificarusuario(".concat(id, ",'").concat(nombre, "', '").concat(correo, "', '").concat(contrasena, "', '").concat(fechaNacimiento, "', '").concat(genero, "', '").concat(telefono, "')"));
+        case 9:
           respuesta = _context4.sent;
           if (!(respuesta[0].affectedRows === 1)) {
-            _context4.next = 13;
+            _context4.next = 14;
             break;
           }
           return _context4.abrupt("return", res.status(200).json({
             message: "Usuario modificado exitosamente"
           }));
-        case 13:
+        case 14:
           return _context4.abrupt("return", res.status(404).json({
             message: "Usuario no encontrado"
           }));
-        case 14:
-          _context4.next = 20;
+        case 15:
+          _context4.next = 21;
           break;
-        case 16:
-          _context4.prev = 16;
-          _context4.t0 = _context4["catch"](1);
+        case 17:
+          _context4.prev = 17;
+          _context4.t0 = _context4["catch"](2);
           console.error("Error al modificar usuario:", _context4.t0);
           return _context4.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor intentalo de nuevo más tarde"
           }));
-        case 20:
+        case 21:
         case "end":
           return _context4.stop();
       }
-    }, _callee4, null, [[1, 16]]);
+    }, _callee4, null, [[2, 17]]);
   }));
   return function modificarusuario(_x7, _x8) {
     return _ref4.apply(this, arguments);
   };
 }();
+
+/**
+ * Modifica el rol de un usuario.
+ * 
+ * @param {Object} req - Recibe la solicitud.
+ * @param {Object} res - Envía la respuesta.
+ */
 var modificarRolUsuario = exports.modificarRolUsuario = /*#__PURE__*/function () {
   var _ref5 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
     var rol, id_usuario, correo, _yield$conexion$query, _yield$conexion$query2, result, payload, token;
@@ -250,6 +291,13 @@ var modificarRolUsuario = exports.modificarRolUsuario = /*#__PURE__*/function ()
     return _ref5.apply(this, arguments);
   };
 }();
+
+/**
+ * Elimina un usuario por su ID.
+ * 
+ * @param {Object} req - Recibe la información del usuario (ID).
+ * @param {Object} res - Envía la respuesta.
+ */
 var eliminarusuario = exports.eliminarusuario = /*#__PURE__*/function () {
   var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
     var id, respuesta;
@@ -293,6 +341,13 @@ var eliminarusuario = exports.eliminarusuario = /*#__PURE__*/function () {
     return _ref6.apply(this, arguments);
   };
 }();
+
+/**
+ * Autentica un usuario y proporciona un token JWT.
+ * 
+ * @param {Object} req - Recibe la información de ingreso.
+ * @param {Object} res - Da la respuesta adecuada dependiendo de las reglas del sistema.
+ */
 var logueoUsuario = exports.logueoUsuario = /*#__PURE__*/function () {
   var _ref7 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
     var _req$body3, correo, contrasena, _yield$conexion$query3, _yield$conexion$query4, rows, usuario, match, payload, token;
