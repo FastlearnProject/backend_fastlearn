@@ -117,7 +117,7 @@ config();
  * @param {Object} res - Envía la información a la base de datos.
  */
  const modificarusuario = async (req, res) => {
-  const id = req.params['id']
+  const id = req.params['id_usuario']
   const {
     nombre,
     correo,

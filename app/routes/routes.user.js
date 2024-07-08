@@ -53,7 +53,7 @@ rutaUser.get("/usuario/:id", verifyToken, mostrarusuario);
  * @memberof rutaUser
  * @function
  */
-rutaUser.put("/usuario/:id", verifyToken, modificarusuario);
+rutaUser.put("/usuario/:id_usuario", verifyToken, modificarusuario);
 /**
  * Ruta para modificar Rol de usuarios.
  * @name put/rol

@@ -49,7 +49,7 @@ rutaUser.get("/usuario/:id", _oauth.verifyToken, _controlUsuario.mostrarusuario)
  * @memberof rutaUser
  * @function
  */
-rutaUser.put("/usuario/:id", _oauth.verifyToken, _controlUsuario.modificarusuario);
+rutaUser.put("/usuario/:id_usuario", _oauth.verifyToken, _controlUsuario.modificarusuario);
 /**
  * Ruta para modificar Rol de usuarios.
  * @name put/rol

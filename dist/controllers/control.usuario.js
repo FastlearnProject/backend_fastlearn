@@ -180,7 +180,7 @@ var modificarusuario = exports.modificarusuario = /*#__PURE__*/function () {
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          id = req.params['id'];
+          id = req.params['id_usuario'];
           _req$body2 = req.body, nombre = _req$body2.nombre, correo = _req$body2.correo, contrasenaPlain = _req$body2.contrasenaPlain, fechaNacimiento = _req$body2.fechaNacimiento, genero = _req$body2.genero, telefono = _req$body2.telefono;
           _context4.prev = 2;
           _context4.next = 5;
