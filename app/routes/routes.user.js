@@ -25,7 +25,7 @@ const rutaUser = Router();
  */
 rutaUser.post("/usuario", crearusuario);
 /**
- * Ruta para el login del usuario.
+ * Ruta para el login del usuario .
  * @name post/usuario
  * @memberof rutaUser
  * @function

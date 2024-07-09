@@ -21,7 +21,7 @@ var rutaUser = (0, _express.Router)();
  */
 rutaUser.post("/usuario", _controlUsuario.crearusuario);
 /**
- * Ruta para el login del usuario.
+ * Ruta para el login del usuario .
  * @name post/usuario
  * @memberof rutaUser
  * @function
