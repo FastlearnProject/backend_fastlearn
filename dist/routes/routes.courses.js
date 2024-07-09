@@ -20,7 +20,7 @@ var rutaCursos = (0, _express.Router)();
  * @function
  * @inner
  */
-rutaCursos.get("/cursos", _control.mostrarCursos);
+rutaCursos.get("/cursos", _oauth.verifyToken, _control.mostrarCursos);
 
 /**
  * Ruta para insertar un nuevo curso.
@@ -28,7 +28,7 @@ rutaCursos.get("/cursos", _control.mostrarCursos);
  * @memberof rutaCursos
  * @function
  */
-rutaCursos.post("/cursos", _control.insertarCurso);
+rutaCursos.post("/cursos", _oauth.verifyToken, _control.insertarCurso);
 
 /**
  * Ruta para mostrar cursos.

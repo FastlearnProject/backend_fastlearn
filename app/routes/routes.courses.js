@@ -15,7 +15,7 @@ const rutaCursos = Router();
  * @function
  * @inner
  */
-rutaCursos.get("/cursos", mostrarCursos);
+rutaCursos.get("/cursos", verifyToken, mostrarCursos);
 
 /**
  * Ruta para insertar un nuevo curso.
@@ -23,7 +23,7 @@ rutaCursos.get("/cursos", mostrarCursos);
  * @memberof rutaCursos
  * @function
  */
-rutaCursos.post("/cursos", insertarCurso);
+rutaCursos.post("/cursos", verifyToken, insertarCurso);
 
 /**
  * Ruta para mostrar cursos.
