@@ -1,10 +1,11 @@
-import express, { Router } from "express";
-import cors from "cors"
-import { config } from "dotenv";
-import ruta from "./routes/index.js";
+import express from 'express';
+import cors from 'cors';
+import { config } from 'dotenv';
+import ruta from './routes/index.js';
+import swaggerUi from 'swagger-ui-express';
+import swaggerFile from './swagger-output.json';
 
 config();
-
 
 /**
  * Configuaración y creación de Express.
@@ -17,12 +18,12 @@ const app = express();
 app.use(express.json());
 
 // Middleware para tener en cuenta URL-encoded.
-app.use(express.urlencoded({ extended : true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Configuración del puerto de la aplicación.
 app.set("port", process.env.PORT || 6000);
 
-//Middleware para habilitar CORS.
+// Middleware para habilitar CORS.
 app.use(cors());
 
 /**
@@ -30,5 +31,8 @@ app.use(cors());
  * @type {Router}
  */
 app.use("/", ruta);
+
+// Usar Swagger UI para la documentación
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 export default app;

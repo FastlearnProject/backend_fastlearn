@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Servidor de la plataforma web FastLearn con node, express, ORM (sequelize)",
   "main": "index.js",
-
   "scripts": {
     "dev": "nodemon app/index.js --exec babel-node",
     "swaggerdev": "node ./app/tools/swagger.js",
