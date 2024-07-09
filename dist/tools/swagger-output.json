@@ -33,32 +33,6 @@
     "/usuario": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nombre": {
-                  "example": "any"
-                },
-                "correo": {
-                  "example": "any"
-                },
-                "contrasenaPlain": {
-                  "example": "any"
-                },
-                "fechaNacimiento": {
-                  "example": "any"
-                },
-                "telefono": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -75,7 +49,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "authorization",
+            "name": "apply(this",
             "in": "header",
             "type": "string"
           }
@@ -93,23 +67,6 @@
     "/login": {
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "correo": {
-                  "example": "any"
-                },
-                "contrasena": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -134,34 +91,7 @@
             "type": "string"
           },
           {
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "authorization",
+            "name": "apply(this",
             "in": "header",
             "type": "string"
           }
@@ -190,36 +120,9 @@
             "type": "string"
           },
           {
-            "name": "authorization",
+            "name": "apply(this",
             "in": "header",
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nombre": {
-                  "example": "any"
-                },
-                "correo": {
-                  "example": "any"
-                },
-                "contrasenaPlain": {
-                  "example": "any"
-                },
-                "fechaNacimiento": {
-                  "example": "any"
-                },
-                "genero": {
-                  "example": "any"
-                },
-                "telefono": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -240,7 +143,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "authorization",
+            "name": "apply(this",
             "in": "header",
             "type": "string"
           },
@@ -293,33 +196,9 @@
         "description": "",
         "parameters": [
           {
-            "name": "authorization",
+            "name": "apply(this",
             "in": "header",
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "imgCurso": {
-                  "example": "any"
-                },
-                "nomCurso": {
-                  "example": "any"
-                },
-                "desCurso": {
-                  "example": "any"
-                },
-                "linkCurso": {
-                  "example": "any"
-                },
-                "tagsCurso": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {

@@ -21,14 +21,14 @@ var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
  */
 var insertarCurso = exports.insertarCurso = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var _req$body, imgCurso, nomCurso, desCurso, linkCurso, tagsCurso, respuesta, curso;
+    var _req$body, imagen, video, titulo, descripcion, linkCurso, tagsCurso, categoria, respuesta, curso;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          _req$body = req.body, imgCurso = _req$body.imgCurso, nomCurso = _req$body.nomCurso, desCurso = _req$body.desCurso, linkCurso = _req$body.linkCurso, tagsCurso = _req$body.tagsCurso;
+          _req$body = req.body, imagen = _req$body.imagen, video = _req$body.video, titulo = _req$body.titulo, descripcion = _req$body.descripcion, linkCurso = _req$body.linkCurso, tagsCurso = _req$body.tagsCurso, categoria = _req$body.categoria;
           _context.prev = 1;
           _context.next = 4;
-          return _dbConfig["default"].query("CALL sp_insertarcurso('".concat(imgCurso, "','").concat(nomCurso, "', '").concat(desCurso, "', '").concat(linkCurso, "', '").concat(tagsCurso, "' )"));
+          return _dbConfig["default"].query("CALL sp_insertarcurso('".concat(imagen, "','").concat(video, "','").concat(titulo, "', '").concat(descripcion, "', '").concat(linkCurso, "', '").concat(tagsCurso, "', '").concat(categoria, "' )"));
         case 4:
           respuesta = _context.sent;
           if (!(respuesta[0].affectedRows == 1)) {

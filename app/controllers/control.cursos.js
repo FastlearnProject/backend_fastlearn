@@ -11,11 +11,11 @@ import conexion from "../config/db.config.js";
  * 
  */
  const insertarCurso = async (req, res) => {
-    const { imgCurso, nomCurso, desCurso, linkCurso, tagsCurso } = req.body;
+    const { imagen, video, titulo, descripcion, linkCurso, tagsCurso, categoria } = req.body;
   
     try {
       const respuesta = await conexion.query(
-        `CALL sp_insertarcurso('${imgCurso}','${nomCurso}', '${desCurso}', '${linkCurso}', '${tagsCurso}' )`
+        `CALL sp_insertarcurso('${imagen}','${video}','${titulo}', '${descripcion}', '${linkCurso}', '${tagsCurso}', '${categoria}' )`
       );
   
       if (respuesta[0].affectedRows == 1) {

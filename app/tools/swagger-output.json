@@ -303,19 +303,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "imgCurso": {
+                "imagen": {
                   "example": "any"
                 },
-                "nomCurso": {
+                "video": {
                   "example": "any"
                 },
-                "desCurso": {
+                "titulo": {
+                  "example": "any"
+                },
+                "descripcion": {
                   "example": "any"
                 },
                 "linkCurso": {
                   "example": "any"
                 },
                 "tagsCurso": {
+                  "example": "any"
+                },
+                "categoria": {
                   "example": "any"
                 }
               }
