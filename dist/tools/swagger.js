@@ -11,12 +11,12 @@ var doc = {
     title: 'FastLearn API',
     description: 'API documentation for FastLearn'
   },
-  host: 'backend-fastlearn.onrender.com',
+  host: 'service-fastlearn.onrender.com',
   schemes: ['https'],
   securityDefinitions: {
     bearerAuth: {
       type: 'apiKey',
-      name: 'Authorization',
+      name: 'authorization',
       "in": 'header',
       scheme: 'bearer',
       bearerFormat: 'JWT'
