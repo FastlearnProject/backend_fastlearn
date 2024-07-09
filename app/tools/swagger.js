@@ -1,4 +1,7 @@
+import { config } from 'dotenv';
 import swaggerAutogen from 'swagger-autogen';
+config();
+
 
 /**
  * Configuración de la documentación de la API.

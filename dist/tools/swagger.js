@@ -1,7 +1,10 @@
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _dotenv = require("dotenv");
 var _swaggerAutogen = _interopRequireDefault(require("swagger-autogen"));
+(0, _dotenv.config)();
+
 /**
  * Configuración de la documentación de la API.
  * @type {object}
