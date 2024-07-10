@@ -16,7 +16,6 @@ export const verifyToken = async (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
-        console.log("Token no proporcionado");
         return incompleto(req, res, 401, "Token no proporcionado");
     }
 
@@ -25,7 +24,6 @@ export const verifyToken = async (req, res, next) => {
         req.user = valida;
         next();
     } catch (e) {
-        console.log("Error al verificar token:", e);
         return incompleto(req, res, 401, "Token no válido");
     }
 }

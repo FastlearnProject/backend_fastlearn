@@ -1,25 +1,17 @@
+/**
+ * Este es el controlador de cursos
+ * @module ctr-cursos
+ */
 import multer from "multer";
 import { BlobServiceClient } from "@azure/storage-blob";
 import conexion from "../config/db.config.js";
 import { config } from "dotenv";
-config();
+config(); // Cargar variables de entorno desde .env
 
-// Configurar Azure Blob Storage
-const connectionString = process.env.AZUREBLOB
-const containerName = process.env.AZURE_CONTAINER;
+const connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING;
+const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME;
 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
 const containerClient = blobServiceClient.getContainerClient(containerName);
-
-// Crear el contenedor si no existe
-const createContainerIfNotExists = async () => {
-  try {
-    await containerClient.createIfNotExists();
-    console.log(`El contenedor "${containerName}" ha sido creado o ya existía.`);
-  } catch (error) {
-    console.error('Error al crear el contenedor:', error.message);
-    throw error;
-  }
-};
 
 // Configurar multer para manejar la carga de archivos
 const storage = multer.memoryStorage();
@@ -27,12 +19,10 @@ const upload = multer({ storage: storage });
 
 // Función para subir imagen a Azure Blob Storage
 const uploadImageToBlobStorage = async (imageBuffer, imageName) => {
-  await createContainerIfNotExists();
   const blockBlobClient = containerClient.getBlockBlobClient(imageName);
 
   try {
     const uploadBlobResponse = await blockBlobClient.uploadData(imageBuffer);
-    console.log(`Imagen ${imageName} subida a Azure Blob Storage`);
     return blockBlobClient.url;
   } catch (error) {
     console.error('Error al subir la imagen a Azure Blob Storage:', error.message);

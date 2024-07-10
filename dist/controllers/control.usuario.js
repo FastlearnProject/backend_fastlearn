@@ -240,18 +240,14 @@ var modificarRolUsuario = exports.modificarRolUsuario = /*#__PURE__*/function ()
           id_usuario = req.user.id_usuario;
           correo = req.user.correo;
           _context5.prev = 3;
-          console.log("Id del usuario:", id_usuario);
-          console.log("Correo del usuario:", correo);
-          console.log("Rol seleccionado:", rol);
-          _context5.next = 9;
+          _context5.next = 6;
           return _dbConfig["default"].query("CALL sp_modificarrol(?, ?)", [correo, rol]);
-        case 9:
+        case 6:
           _yield$conexion$query = _context5.sent;
           _yield$conexion$query2 = (0, _slicedToArray2["default"])(_yield$conexion$query, 1);
           result = _yield$conexion$query2[0];
-          console.log("Resultado de la consulta:", result);
           if (!(result && result.affectedRows === 1)) {
-            _context5.next = 19;
+            _context5.next = 15;
             break;
           }
           payload = {
@@ -266,26 +262,26 @@ var modificarRolUsuario = exports.modificarRolUsuario = /*#__PURE__*/function ()
             message: "Rol actualizado exitosamente",
             token: token
           }));
-        case 19:
+        case 15:
           return _context5.abrupt("return", res.status(404).json({
             message: "Usuario no encontrado"
           }));
-        case 20:
-          _context5.next = 26;
+        case 16:
+          _context5.next = 22;
           break;
-        case 22:
-          _context5.prev = 22;
+        case 18:
+          _context5.prev = 18;
           _context5.t0 = _context5["catch"](3);
           console.error("Error al actualizar el rol:", _context5.t0); // Loguea el error detallado
           return _context5.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor intentalo de nuevo más tarde",
             error: _context5.t0.message // Agrega el mensaje de error a la respuesta
           }));
-        case 26:
+        case 22:
         case "end":
           return _context5.stop();
       }
-    }, _callee5, null, [[3, 22]]);
+    }, _callee5, null, [[3, 18]]);
   }));
   return function modificarRolUsuario(_x9, _x10) {
     return _ref5.apply(this, arguments);

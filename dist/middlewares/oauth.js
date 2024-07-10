@@ -28,31 +28,29 @@ var verifyToken = exports.verifyToken = /*#__PURE__*/function () {
           authHeader = req.headers["authorization"];
           token = authHeader && authHeader.split(" ")[1];
           if (token) {
-            _context.next = 5;
+            _context.next = 4;
             break;
           }
-          console.log("Token no proporcionado");
           return _context.abrupt("return", (0, _mensajes.incompleto)(req, res, 401, "Token no proporcionado"));
-        case 5:
-          _context.prev = 5;
-          _context.next = 8;
+        case 4:
+          _context.prev = 4;
+          _context.next = 7;
           return _jsonwebtoken["default"].verify(token, process.env.TOKEN_PRIVATEKEY);
-        case 8:
+        case 7:
           valida = _context.sent;
           req.user = valida;
           next();
-          _context.next = 17;
+          _context.next = 15;
           break;
-        case 13:
-          _context.prev = 13;
-          _context.t0 = _context["catch"](5);
-          console.log("Error al verificar token:", _context.t0);
+        case 12:
+          _context.prev = 12;
+          _context.t0 = _context["catch"](4);
           return _context.abrupt("return", (0, _mensajes.incompleto)(req, res, 401, "Token no válido"));
-        case 17:
+        case 15:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[5, 13]]);
+    }, _callee, null, [[4, 12]]);
   }));
   return function verifyToken(_x, _x2, _x3) {
     return _ref.apply(this, arguments);

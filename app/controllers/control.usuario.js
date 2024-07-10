@@ -163,16 +163,11 @@ config();
   const { correo } = req.user;
 
   try {
-    console.log("Id del usuario:", id_usuario);
-    console.log("Correo del usuario:", correo);
-    console.log("Rol seleccionado:", rol);
 
     const [result] = await conexion.query("CALL sp_modificarrol(?, ?)", [
       correo,
       rol,
     ]);
-
-    console.log("Resultado de la consulta:", result);
 
     if (result && result.affectedRows === 1) {
       const payload = { id_usuario, correo, rol };
