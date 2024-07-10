@@ -10,16 +10,6 @@ const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME;
 const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
 const containerClient = blobServiceClient.getContainerClient(containerName);
 
-// Crear el contenedor si no existe
-const createContainerIfNotExists = async () => {
-  try {
-    await containerClient.createIfNotExists();
-    console.log(`El contenedor "${containerName}" ha sido creado o ya existía.`);
-  } catch (error) {
-    console.error('Error al crear el contenedor:', error.message);
-    throw error;
-  }
-};
 
 // Configurar multer para manejar la carga de archivos
 const storage = multer.memoryStorage();
@@ -42,15 +32,18 @@ const uploadImageToBlobStorage = async (imageBuffer, imageName) => {
 
 // Controlador para insertar curso
 const insertarCurso = async (req, res) => {
-  const { video, titulo, descripcion, linkCurso, tagsCurso, categoria } = req.body;
+  const { titulo, descripcion, linkCurso, tagsCurso, categoria } = req.body;
   const imagen = req.file;
+  const video = req.file;
 
   const imageName = imagen.originalname;
+  const videoName = video.originalname;
 
   try {
     const imageUrl = await uploadImageToBlobStorage(imagen.buffer, imageName);
+    const videoUrl = await uploadImageToBlobStorage(video.buffer, videoName);
     const respuesta = await conexion.query(
-      `CALL sp_insertarcurso('${imageUrl}','${video}','${titulo}', '${descripcion}', '${linkCurso}', '${tagsCurso}', '${categoria}')`
+      `CALL sp_insertarcurso('${imageUrl}','${videoUrl}','${titulo}', '${descripcion}', '${linkCurso}', '${tagsCurso}', '${categoria}')`
     );
 
     if (respuesta[0].affectedRows == 1) {
