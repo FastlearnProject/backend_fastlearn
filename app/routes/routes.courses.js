@@ -1,43 +1,11 @@
-import { Router } from "express";
-import {verifyToken} from "../middlewares/oauth"
-import { insertarCurso, mostrarCursos, mostrarCursosFree } from "../controllers/control.cursos";
+import express from "express";
+import { insertarCurso, upload, mostrarCursos, mostrarCursosFree } from "../controllers/control.cursos.js";
+import { verifyToken } from "../middleware/oauth.js";
 
-/**
- * Se utiliza el Express Router para manejar las rutas de los cursos.
- * @type {object}
- */
-const rutaCursos = Router();
+const router = express.Router();
 
-/**
- * Ruta para obtener la lista de cursos.
- * @name get/cursos
- * @memberof rutaCursos
- * @function
- * @inner
- */
-rutaCursos.get("/cursos", verifyToken, mostrarCursos);
+router.post("/cursos", verifyToken, upload.single('imagen'), insertarCurso);
+router.get("/cursos", mostrarCursos);
+router.get("/cursos/free", mostrarCursosFree);
 
-/**
- * Ruta para insertar un nuevo curso.
- * @name post/cursos
- * @memberof rutaCursos
- * @function
- */
-rutaCursos.post("/cursos", verifyToken, insertarCurso);
-
-/**
- * Ruta para mostrar cursos.
- * @name get/cursos-free
- * @memberof rutaCursos
- * @function
- */
-rutaCursos.get("/cursos-free", mostrarCursosFree);
-/**
- * Ruta para incertar cursos y verificar token.
- * @name post/cursos
- * @memberof rutaCursos
- * @function
- */
-rutaCursos.post("/cursos", verifyToken, insertarCurso);
-
-export default rutaCursos;
+export default router;
