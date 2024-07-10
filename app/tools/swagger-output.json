@@ -285,9 +285,6 @@
             "schema": {
               "type": "object",
               "properties": {
-                "video": {
-                  "example": "any"
-                },
                 "titulo": {
                   "example": "any"
                 },

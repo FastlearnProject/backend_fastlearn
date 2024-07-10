@@ -26,35 +26,32 @@ var upload = exports.upload = (0, _multer["default"])({
 });
 
 // Función para subir imagen a Azure Blob Storage
-var uploadImageToBlobStorage = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(imageBuffer, imageName) {
+var uploadToBlobStorage = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(buffer, fileName) {
     var blockBlobClient, uploadBlobResponse;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
-          return createContainerIfNotExists();
-        case 2:
-          blockBlobClient = containerClient.getBlockBlobClient(imageName);
-          _context.prev = 3;
-          _context.next = 6;
-          return blockBlobClient.uploadData(imageBuffer);
-        case 6:
+          blockBlobClient = containerClient.getBlockBlobClient(fileName);
+          _context.prev = 1;
+          _context.next = 4;
+          return blockBlobClient.uploadData(buffer);
+        case 4:
           uploadBlobResponse = _context.sent;
-          console.log("Imagen ".concat(imageName, " subida a Azure Blob Storage"));
+          console.log("Archivo ".concat(fileName, " subido a Azure Blob Storage"));
           return _context.abrupt("return", blockBlobClient.url);
-        case 11:
-          _context.prev = 11;
-          _context.t0 = _context["catch"](3);
+        case 9:
+          _context.prev = 9;
+          _context.t0 = _context["catch"](1);
           console.error('Error al subir la imagen a Azure Blob Storage:', _context.t0.message);
           throw _context.t0;
-        case 15:
+        case 13:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[3, 11]]);
+    }, _callee, null, [[1, 9]]);
   }));
-  return function uploadImageToBlobStorage(_x, _x2) {
+  return function uploadToBlobStorage(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -62,50 +59,54 @@ var uploadImageToBlobStorage = /*#__PURE__*/function () {
 // Controlador para insertar curso
 var insertarCurso = exports.insertarCurso = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var _req$body, video, titulo, descripcion, linkCurso, tagsCurso, categoria, imagen, imageName, imageUrl, respuesta, curso;
+    var _req$body, titulo, descripcion, linkCurso, tagsCurso, categoria, imagen, video, imageName, videoName, imageUrl, videoUrl, respuesta;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _req$body = req.body, video = _req$body.video, titulo = _req$body.titulo, descripcion = _req$body.descripcion, linkCurso = _req$body.linkCurso, tagsCurso = _req$body.tagsCurso, categoria = _req$body.categoria;
-          imagen = req.file;
+          _req$body = req.body, titulo = _req$body.titulo, descripcion = _req$body.descripcion, linkCurso = _req$body.linkCurso, tagsCurso = _req$body.tagsCurso, categoria = _req$body.categoria;
+          imagen = req.files['imagen'][0]; // Accede al primer archivo de imagen
+          video = req.files['video'][0];
           imageName = imagen.originalname;
-          _context2.prev = 3;
-          _context2.next = 6;
-          return uploadImageToBlobStorage(imagen.buffer, imageName);
-        case 6:
+          videoName = video.originalname;
+          _context2.prev = 5;
+          _context2.next = 8;
+          return uploadToBlobStorage(imagen.buffer, imageName);
+        case 8:
           imageUrl = _context2.sent;
-          _context2.next = 9;
-          return _dbConfig["default"].query("CALL sp_insertarcurso('".concat(imageUrl, "','").concat(video, "','").concat(titulo, "', '").concat(descripcion, "', '").concat(linkCurso, "', '").concat(tagsCurso, "', '").concat(categoria, "')"));
-        case 9:
+          _context2.next = 11;
+          return uploadToBlobStorage(video.buffer, videoName);
+        case 11:
+          videoUrl = _context2.sent;
+          _context2.next = 14;
+          return _dbConfig["default"].query("CALL sp_insertarcurso('".concat(imageUrl, "','").concat(videoUrl, "','").concat(titulo, "', '").concat(descripcion, "', '").concat(linkCurso, "', '").concat(tagsCurso, "', '").concat(categoria, "')"));
+        case 14:
           respuesta = _context2.sent;
           if (!(respuesta[0].affectedRows == 1)) {
-            _context2.next = 15;
+            _context2.next = 19;
             break;
           }
-          curso = respuesta[0][0];
           return _context2.abrupt("return", res.status(201).json({
-            message: "Curso creado exitosamente",
-            curso: curso
+            message: "Curso creado exitosamente"
           }));
-        case 15:
+        case 19:
           return _context2.abrupt("return", res.status(200).json({
             message: "No se pudo crear el curso"
           }));
-        case 16:
-          _context2.next = 22;
+        case 20:
+          _context2.next = 26;
           break;
-        case 18:
-          _context2.prev = 18;
-          _context2.t0 = _context2["catch"](3);
+        case 22:
+          _context2.prev = 22;
+          _context2.t0 = _context2["catch"](5);
           console.error("Error al crear curso:", _context2.t0);
           return _context2.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor inténtalo de nuevo más tarde"
           }));
-        case 22:
+        case 26:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[3, 18]]);
+    }, _callee2, null, [[5, 22]]);
   }));
   return function insertarCurso(_x3, _x4) {
     return _ref2.apply(this, arguments);

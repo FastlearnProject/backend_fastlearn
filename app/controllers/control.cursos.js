@@ -16,13 +16,12 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 // Función para subir imagen a Azure Blob Storage
-const uploadImageToBlobStorage = async (imageBuffer, imageName) => {
-  await createContainerIfNotExists();
-  const blockBlobClient = containerClient.getBlockBlobClient(imageName);
+const uploadToBlobStorage = async (buffer, fileName) => {
+  const blockBlobClient = containerClient.getBlockBlobClient(fileName);
 
   try {
-    const uploadBlobResponse = await blockBlobClient.uploadData(imageBuffer);
-    console.log(`Imagen ${imageName} subida a Azure Blob Storage`);
+    const uploadBlobResponse = await blockBlobClient.uploadData(buffer);
+    console.log(`Archivo ${fileName} subido a Azure Blob Storage`);
     return blockBlobClient.url;
   } catch (error) {
     console.error('Error al subir la imagen a Azure Blob Storage:', error.message);
@@ -33,24 +32,22 @@ const uploadImageToBlobStorage = async (imageBuffer, imageName) => {
 // Controlador para insertar curso
 const insertarCurso = async (req, res) => {
   const { titulo, descripcion, linkCurso, tagsCurso, categoria } = req.body;
-  const imagen = req.file;
-  const video = req.file;
+  const imagen = req.files['imagen'][0]; // Accede al primer archivo de imagen
+  const video = req.files['video'][0]; 
 
   const imageName = imagen.originalname;
   const videoName = video.originalname;
 
   try {
-    const imageUrl = await uploadImageToBlobStorage(imagen.buffer, imageName);
-    const videoUrl = await uploadImageToBlobStorage(video.buffer, videoName);
+    const imageUrl = await uploadToBlobStorage(imagen.buffer, imageName);
+    const videoUrl = await uploadToBlobStorage(video.buffer, videoName);
     const respuesta = await conexion.query(
       `CALL sp_insertarcurso('${imageUrl}','${videoUrl}','${titulo}', '${descripcion}', '${linkCurso}', '${tagsCurso}', '${categoria}')`
     );
 
     if (respuesta[0].affectedRows == 1) {
-      const curso = respuesta[0][0];
       return res.status(201).json({
         message: "Curso creado exitosamente",
-        curso: curso,
       });
     } else {
       return res.status(200).json({ message: "No se pudo crear el curso" });
