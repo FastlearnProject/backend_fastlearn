@@ -1,6 +1,6 @@
 import express from "express";
 import { insertarCurso, upload, mostrarCursos, mostrarCursosFree } from "../controllers/control.cursos.js";
-import { verifyToken } from "../middleware/oauth.js";
+import { verifyToken } from "../middlewares/oauth.js";
 
 const router = express.Router();
 

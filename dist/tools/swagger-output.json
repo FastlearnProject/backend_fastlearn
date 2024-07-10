@@ -176,6 +176,13 @@
     "/cursos": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "apply(this",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
