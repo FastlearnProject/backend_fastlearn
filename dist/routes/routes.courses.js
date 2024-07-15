@@ -18,4 +18,5 @@ router.post("/cursos", _oauth.verifyToken, _controlCursos.upload.fields([{
 }]), _controlCursos.insertarCurso);
 router.get("/cursos", _controlCursos.mostrarCursos);
 router.get("/cursos/free", _controlCursos.mostrarCursosFree);
+router.get("/cursos/:id", _controlCursos.mostrarCurso);
 var _default = exports["default"] = router;
