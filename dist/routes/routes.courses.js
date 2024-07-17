@@ -16,7 +16,7 @@ router.post("/cursos", _oauth.verifyToken, _controlCursos.upload.fields([{
   name: 'video',
   maxCount: 1
 }]), _controlCursos.insertarCurso);
-router.get("/cursos", _controlCursos.mostrarCursos);
+router.get("/cursos", _oauth.verifyToken, _controlCursos.mostrarCursos);
 router.get("/cursos/free", _controlCursos.mostrarCursosFree);
-router.get("/cursos/:id", _controlCursos.mostrarCurso);
+router.get("/cursos/:id", _oauth.verifyToken, _controlCursos.mostrarCurso);
 var _default = exports["default"] = router;

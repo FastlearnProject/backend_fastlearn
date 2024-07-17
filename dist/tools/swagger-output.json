@@ -197,6 +197,13 @@
       },
       "get": {
         "description": "",
+        "parameters": [
+          {
+            "name": "apply(this",
+            "in": "header",
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -228,6 +235,11 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "type": "string"
+          },
+          {
+            "name": "apply(this",
+            "in": "header",
             "type": "string"
           }
         ],
