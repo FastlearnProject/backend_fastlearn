@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mostrarArticulos = exports.mostrarArticulo = exports.insertarArticulo = void 0;
+exports.mostrarArticulos = exports.mostrarArticulo = exports.insertarArticulo = exports.eliminarArticulo = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
@@ -37,7 +37,7 @@ var insertarArticulo = exports.insertarArticulo = /*#__PURE__*/function () {
         case 12:
           _context.prev = 12;
           _context.t0 = _context["catch"](1);
-          console.error("Error al crear curso:", _context.t0);
+          console.error("Error al crear articulo:", _context.t0);
           return _context.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor inténtalo de nuevo más tarde"
           }));
@@ -66,7 +66,7 @@ var mostrarArticulos = exports.mostrarArticulos = /*#__PURE__*/function () {
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.error("Error al mostrar cursos:", _context2.t0);
+          console.error("Error al mostrar articulos:", _context2.t0);
           return _context2.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor inténtalo de nuevo más tarde"
           }));
@@ -96,7 +96,7 @@ var mostrarArticulo = exports.mostrarArticulo = /*#__PURE__*/function () {
         case 8:
           _context3.prev = 8;
           _context3.t0 = _context3["catch"](1);
-          console.error("Error al mostrar cursos:", _context3.t0);
+          console.error("Error al mostrar articulos:", _context3.t0);
           return _context3.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor inténtalo de nuevo más tarde"
           }));
@@ -108,5 +108,48 @@ var mostrarArticulo = exports.mostrarArticulo = /*#__PURE__*/function () {
   }));
   return function mostrarArticulo(_x5, _x6) {
     return _ref3.apply(this, arguments);
+  };
+}();
+var eliminarArticulo = exports.eliminarArticulo = /*#__PURE__*/function () {
+  var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
+    var id, respuesta;
+    return _regenerator["default"].wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          id = req.params.id;
+          _context4.prev = 1;
+          _context4.next = 4;
+          return _dbConfig["default"].query("CALL sp_eliminararticulo(".concat(id, ")"));
+        case 4:
+          respuesta = _context4.sent;
+          if (!(respuesta[0].affectedRows === 1)) {
+            _context4.next = 9;
+            break;
+          }
+          return _context4.abrupt("return", res.status(200).json({
+            message: "Articulo eliminado exitosamente"
+          }));
+        case 9:
+          return _context4.abrupt("return", res.status(404).json({
+            message: "Articulo no encontrado"
+          }));
+        case 10:
+          _context4.next = 16;
+          break;
+        case 12:
+          _context4.prev = 12;
+          _context4.t0 = _context4["catch"](1);
+          console.error("Error al eliminar articulo:", _context4.t0);
+          return _context4.abrupt("return", res.status(500).json({
+            message: "Error en el servidor, por favor intentalo de nuevo más tarde"
+          }));
+        case 16:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[1, 12]]);
+  }));
+  return function eliminarArticulo(_x7, _x8) {
+    return _ref4.apply(this, arguments);
   };
 }();

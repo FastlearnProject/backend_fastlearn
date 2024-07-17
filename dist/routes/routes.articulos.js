@@ -11,4 +11,5 @@ var rutaArticulos = (0, _express.Router)();
 rutaArticulos.post("/articles", _oauth.verifyToken, _control.insertarArticulo);
 rutaArticulos.get("/articles", _oauth.verifyToken, _control.mostrarArticulos);
 rutaArticulos.get("/articles/:id", _oauth.verifyToken, _control.mostrarArticulo);
+rutaArticulos["delete"]("/articles/:id", _oauth.verifyToken, _control.eliminarArticulo);
 var _default = exports["default"] = rutaArticulos;
