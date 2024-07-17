@@ -48,6 +48,19 @@ const insertarArticulo = async (req, res) => {
     }
   }
 
+  const mostrarArticuloUsuario = async (req, res)=>{
+    const id = req.params['id'];
+    try {
+      const respuesta = await conexion.query(`CALL sp_mostrararticulouser(${id})`);
+      return res.status(200).json(respuesta[0]);
+    } catch (error) {
+      console.error("Error al mostrar articulos:", error);
+      return res.status(500).json({
+        message: "Error en el servidor, por favor inténtalo de nuevo más tarde",
+      });
+    }
+  }
+
   const eliminarArticulo = async (req, res) => {
     const id = req.params.id;
     try {
@@ -69,4 +82,4 @@ const insertarArticulo = async (req, res) => {
     }
   };
 
-  export {insertarArticulo, mostrarArticulos, mostrarArticulo, eliminarArticulo};
+  export {insertarArticulo, mostrarArticulos, mostrarArticulo, eliminarArticulo, mostrarArticuloUsuario};

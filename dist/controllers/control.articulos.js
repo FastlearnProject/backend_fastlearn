@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.mostrarArticulos = exports.mostrarArticulo = exports.insertarArticulo = exports.eliminarArticulo = void 0;
+exports.mostrarArticulos = exports.mostrarArticuloUsuario = exports.mostrarArticulo = exports.insertarArticulo = exports.eliminarArticulo = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _dbConfig = _interopRequireDefault(require("../config/db.config.js"));
@@ -110,46 +110,76 @@ var mostrarArticulo = exports.mostrarArticulo = /*#__PURE__*/function () {
     return _ref3.apply(this, arguments);
   };
 }();
-var eliminarArticulo = exports.eliminarArticulo = /*#__PURE__*/function () {
+var mostrarArticuloUsuario = exports.mostrarArticuloUsuario = /*#__PURE__*/function () {
   var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
     var id, respuesta;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
-          id = req.params.id;
+          id = req.params['id'];
           _context4.prev = 1;
           _context4.next = 4;
-          return _dbConfig["default"].query("CALL sp_eliminararticulo(".concat(id, ")"));
+          return _dbConfig["default"].query("CALL sp_mostrararticulouser(".concat(id, ")"));
         case 4:
           respuesta = _context4.sent;
+          return _context4.abrupt("return", res.status(200).json(respuesta[0]));
+        case 8:
+          _context4.prev = 8;
+          _context4.t0 = _context4["catch"](1);
+          console.error("Error al mostrar articulos:", _context4.t0);
+          return _context4.abrupt("return", res.status(500).json({
+            message: "Error en el servidor, por favor inténtalo de nuevo más tarde"
+          }));
+        case 12:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[1, 8]]);
+  }));
+  return function mostrarArticuloUsuario(_x7, _x8) {
+    return _ref4.apply(this, arguments);
+  };
+}();
+var eliminarArticulo = exports.eliminarArticulo = /*#__PURE__*/function () {
+  var _ref5 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
+    var id, respuesta;
+    return _regenerator["default"].wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          id = req.params.id;
+          _context5.prev = 1;
+          _context5.next = 4;
+          return _dbConfig["default"].query("CALL sp_eliminararticulo(".concat(id, ")"));
+        case 4:
+          respuesta = _context5.sent;
           if (!(respuesta[0].affectedRows === 1)) {
-            _context4.next = 9;
+            _context5.next = 9;
             break;
           }
-          return _context4.abrupt("return", res.status(200).json({
+          return _context5.abrupt("return", res.status(200).json({
             message: "Articulo eliminado exitosamente"
           }));
         case 9:
-          return _context4.abrupt("return", res.status(404).json({
+          return _context5.abrupt("return", res.status(404).json({
             message: "Articulo no encontrado"
           }));
         case 10:
-          _context4.next = 16;
+          _context5.next = 16;
           break;
         case 12:
-          _context4.prev = 12;
-          _context4.t0 = _context4["catch"](1);
-          console.error("Error al eliminar articulo:", _context4.t0);
-          return _context4.abrupt("return", res.status(500).json({
+          _context5.prev = 12;
+          _context5.t0 = _context5["catch"](1);
+          console.error("Error al eliminar articulo:", _context5.t0);
+          return _context5.abrupt("return", res.status(500).json({
             message: "Error en el servidor, por favor intentalo de nuevo más tarde"
           }));
         case 16:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
-    }, _callee4, null, [[1, 12]]);
+    }, _callee5, null, [[1, 12]]);
   }));
-  return function eliminarArticulo(_x7, _x8) {
-    return _ref4.apply(this, arguments);
+  return function eliminarArticulo(_x9, _x10) {
+    return _ref5.apply(this, arguments);
   };
 }();
