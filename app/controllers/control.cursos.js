@@ -97,4 +97,25 @@ const mostrarCurso = async (req, res)=>{
   }
 }
 
-export { insertarCurso, upload, mostrarCursos, mostrarCursosFree, mostrarCurso };
+const eliminarCurso = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const respuesta = await conexion.query(`CALL sp_eliminarcurso(${id})`);
+    if (respuesta[0].affectedRows === 1) {
+      return res
+        .status(200)
+        .json({ message: "Curso eliminado exitosamente" });
+    } else {
+      return res.status(404).json({ message: "Curso no encontrado" });
+    }
+  } catch (err) {
+    console.error("Error al eliminar el curso:", err);
+    return res
+      .status(500)
+      .json({
+        message: "Error en el servidor, por favor intentalo de nuevo más tarde",
+      });
+  }
+};
+
+export { insertarCurso, upload, mostrarCursos, mostrarCursosFree, mostrarCurso , eliminarCurso};

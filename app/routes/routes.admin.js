@@ -7,5 +7,7 @@ const rutaAdmin = Router();
 rutaAdmin.get("/admin/:id", verifyToken, mostrarAdmin)
 rutaAdmin.get("/admin", verifyToken, mostrarAdmins)
 rutaAdmin.post("/loginAdmin", logueoAdmin)
+rutaAdmin.put("/admin", logueoAdmin)
+rutaAdmin.delete("/admin", logueoAdmin)
 
 export default rutaAdmin;

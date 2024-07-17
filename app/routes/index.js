@@ -8,6 +8,7 @@ import rutaCursos from "./routes.courses.js";
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from '../tools/swagger-output.json';
 import rutaAdmin from "./routes.admin.js";
+import rutaArticulos from "./routes.articulos.js";
 
 /**
  * Se utiliza el Express Router para manejar las rutas del proyecto.
@@ -46,6 +47,14 @@ ruta.use("/", rutaCursos);
  * @function
  */
 ruta.use("/", rutaAdmin);
+
+/**
+ * Hace uso de la ruta Admin
+ * @name / 
+ * @memberof ruta
+ * @function
+ */
+ruta.use("/", rutaArticulos);
 
 
 /**

@@ -19,4 +19,5 @@ router.post("/cursos", _oauth.verifyToken, _controlCursos.upload.fields([{
 router.get("/cursos", _oauth.verifyToken, _controlCursos.mostrarCursos);
 router.get("/cursos/free", _controlCursos.mostrarCursosFree);
 router.get("/cursos/:id", _oauth.verifyToken, _controlCursos.mostrarCurso);
+router["delete"]("/cursos/:id", _oauth.verifyToken, _controlCursos.eliminarCurso);
 var _default = exports["default"] = router;

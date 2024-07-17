@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.upload = exports.mostrarCursosFree = exports.mostrarCursos = exports.mostrarCurso = exports.insertarCurso = void 0;
+exports.upload = exports.mostrarCursosFree = exports.mostrarCursos = exports.mostrarCurso = exports.insertarCurso = exports.eliminarCurso = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _multer = _interopRequireDefault(require("multer"));
@@ -198,5 +198,48 @@ var mostrarCurso = exports.mostrarCurso = /*#__PURE__*/function () {
   }));
   return function mostrarCurso(_x9, _x10) {
     return _ref5.apply(this, arguments);
+  };
+}();
+var eliminarCurso = exports.eliminarCurso = /*#__PURE__*/function () {
+  var _ref6 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
+    var id, respuesta;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          id = req.params.id;
+          _context6.prev = 1;
+          _context6.next = 4;
+          return _dbConfig["default"].query("CALL sp_eliminarcurso(".concat(id, ")"));
+        case 4:
+          respuesta = _context6.sent;
+          if (!(respuesta[0].affectedRows === 1)) {
+            _context6.next = 9;
+            break;
+          }
+          return _context6.abrupt("return", res.status(200).json({
+            message: "Curso eliminado exitosamente"
+          }));
+        case 9:
+          return _context6.abrupt("return", res.status(404).json({
+            message: "Curso no encontrado"
+          }));
+        case 10:
+          _context6.next = 16;
+          break;
+        case 12:
+          _context6.prev = 12;
+          _context6.t0 = _context6["catch"](1);
+          console.error("Error al eliminar el curso:", _context6.t0);
+          return _context6.abrupt("return", res.status(500).json({
+            message: "Error en el servidor, por favor intentalo de nuevo más tarde"
+          }));
+        case 16:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6, null, [[1, 12]]);
+  }));
+  return function eliminarCurso(_x11, _x12) {
+    return _ref6.apply(this, arguments);
   };
 }();
