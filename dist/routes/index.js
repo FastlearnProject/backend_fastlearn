@@ -11,6 +11,7 @@ var _routesUser = _interopRequireDefault(require("../routes/routes.user.js"));
 var _routesCourses = _interopRequireDefault(require("./routes.courses.js"));
 var _swaggerUiExpress = _interopRequireDefault(require("swagger-ui-express"));
 var _swaggerOutput = _interopRequireDefault(require("../tools/swagger-output.json"));
+var _routesAdmin = _interopRequireDefault(require("./routes.admin.js"));
 /**
  * @module rutas-index
  */
@@ -44,6 +45,14 @@ ruta.use("/", _routesUser["default"]);
  * @function
  */
 ruta.use("/", _routesCourses["default"]);
+
+/**
+ * Hace uso de la ruta Admin
+ * @name / 
+ * @memberof ruta
+ * @function
+ */
+ruta.use("/", _routesAdmin["default"]);
 
 /**
  * Hace uso de Swagger UI para realizar la documentación de la API.
