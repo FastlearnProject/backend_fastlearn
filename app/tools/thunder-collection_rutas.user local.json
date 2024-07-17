@@ -1,0 +1,144 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "rutas.user local",
+    "collectionId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+    "dateExported": "2024-07-17T16:11:49.396Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "04468e93-b991-4abe-84f6-f1e2c1602066",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Eliminar usuario",
+            "url": "http://localhost:3000/usuario/6",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-06-30T17:56:28.904Z",
+            "modified": "2024-07-10T05:41:03.418Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJjb3JyZW8iOiJrZXZpbkBnbWFpbC5jb20iLCJyb2wiOiJzdHVkZW50IiwiaWF0IjoxNzIwNTkwMDE5LCJleHAiOjE3MjA1OTcyMTl9.2riIHvE3EcaNREehh17En9ypM7ElMxvwYi2YQi9hDB8"
+                }
+            ]
+        },
+        {
+            "_id": "f5f06ec1-ba9a-4c5b-92d0-23327cf13912",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": " Mostrar usuario  id",
+            "url": "http://localhost:3000/usuario/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-30T17:56:28.905Z",
+            "modified": "2024-07-10T05:40:45.010Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJjb3JyZW8iOiJrZXZpbkBnbWFpbC5jb20iLCJyb2wiOiJzdHVkZW50IiwiaWF0IjoxNzIwNTkwMDE5LCJleHAiOjE3MjA1OTcyMTl9.2riIHvE3EcaNREehh17En9ypM7ElMxvwYi2YQi9hDB8"
+                }
+            ]
+        },
+        {
+            "_id": "1f5a9909-5a31-47da-af21-b49ee20e2f36",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Mostrar todos los usuarios",
+            "url": "http://localhost:3000/usuario/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-06-30T17:56:28.906Z",
+            "modified": "2024-07-17T06:32:39.173Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6MSwiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAYWRtaW4uY29tIiwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MjExOTEwMTcsImV4cCI6MTcyMTE5ODIxN30.9WrkTrkB6fYaPKk_bbXGBzDo65uWAI-BS6qSLUtSxxI"
+                }
+            ]
+        },
+        {
+            "_id": "b692af08-8bd4-43c4-96a1-1b5b5b4ba5ef",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Insertar usuario",
+            "url": "http://localhost:3000/usuario",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-30T17:56:28.907Z",
+            "modified": "2024-07-10T05:39:48.141Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Kevin Andres\",\n  \"correo\": \"kevin@gmail.com\",\n  \"contrasenaPlain\": \"12345\",\n  \"fechaNacimiento\": \"2004-06-26\",\n  \"telefono\": \"3052338332\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "69df4943-b289-476f-973c-4bdc63957f1a",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Loguear usuario",
+            "url": "http://localhost:3000/login",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-06-30T17:58:35.812Z",
+            "modified": "2024-07-17T15:16:29.943Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\":\"agustin.lopez2606@gmail.com\",\n  \"contrasena\": \"12345\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "6556231f-f239-4069-86ca-9a95f3570003",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Modificar Rol usuario",
+            "url": "http://localhost:3000/rol",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-06-30T17:59:15.419Z",
+            "modified": "2024-07-10T05:40:05.127Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJub21icmUiOiJLZXZpbiBBbmRyZXMiLCJjb3JyZW8iOiJrZXZpbkBnbWFpbC5jb20iLCJpYXQiOjE3MjA1ODk5ODgsImV4cCI6MTcyMDU5NzE4OH0.i4hRqGmVNWFNTRO7rzj2RWEoFY1I-5R55aKUplaAeys"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"rol\": \"student\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "5003b995-d3bf-4d35-9445-8009bfac571b",
+            "colId": "a9552e3f-5a67-4ace-849e-bf81b2f4c8d9",
+            "containerId": "",
+            "name": "Modificar usuario",
+            "url": "http://localhost:3000/usuario/10",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-07-08T02:07:44.774Z",
+            "modified": "2024-07-10T04:36:30.680Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxMCwiY29ycmVvIjoiaG9sYUBnbWFpbC5jb20iLCJyb2wiOiJkb2NlbnRlIiwiaWF0IjoxNzIwNTg2MTQzLCJleHAiOjE3MjA1OTMzNDN9.y1aBlPrgRkuxfAcA_4BHTlG7A8hhhBBTWvz6C3WZmiM"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Agustin\",\n  \"correo\": \"agustin@gmail.com\",\n  \"contrasenaPlain\": \"12345\",\n  \"fechaNacimiento\": \"2004-06-26\",\n  \"telefono\": \"123\"\n}\n",
+                "form": []
+            }
+        }
+    ],
+    "ref": "cn2lFef0E_qC0wtF2O_Hxz9f_AUwSxdIDRBUY5YTqlfKU2mIwILzyRhBYcz1HDdBC-vZsFLzWlL8Haw_gAFCZg"
+}

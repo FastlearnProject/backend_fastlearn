@@ -1,0 +1,62 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "rutas backend articulos",
+    "collectionId": "c22aa36c-96ab-4c38-8ea2-72929bbbb4eb",
+    "dateExported": "2024-07-17T16:11:25.347Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "3ec55938-d1a4-47da-a07b-bdbc3c7abb1a",
+            "colId": "c22aa36c-96ab-4c38-8ea2-72929bbbb4eb",
+            "containerId": "",
+            "name": "Mostrar todos los articulos",
+            "url": "https://service-fastlearn.onrender.com/articles/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-17T15:26:11.929Z",
+            "modified": "2024-07-17T15:26:11.929Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxMywiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAZ21haWwuY29tIiwicm9sIjoidGVhY2hlciIsImlhdCI6MTcyMTIyOTM4OSwiZXhwIjoxNzIxMjM2NTg5fQ.PoNKNTDOQOdDoY8Ow1o2Pli_0_1-5XtL-oV_TkdHNPs"
+                }
+            ]
+        },
+        {
+            "_id": "c468b249-24e1-4a88-b913-6e84a2e35daa",
+            "colId": "c22aa36c-96ab-4c38-8ea2-72929bbbb4eb",
+            "containerId": "",
+            "name": "Eliminar articulo ID",
+            "url": "https://service-fastlearn.onrender.com/articles/1",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-07-17T15:27:44.990Z",
+            "modified": "2024-07-17T15:27:44.990Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxMywiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAZ21haWwuY29tIiwicm9sIjoidGVhY2hlciIsImlhdCI6MTcyMTIyOTM4OSwiZXhwIjoxNzIxMjM2NTg5fQ.PoNKNTDOQOdDoY8Ow1o2Pli_0_1-5XtL-oV_TkdHNPs"
+                }
+            ]
+        },
+        {
+            "_id": "c0bd67ab-da61-4a80-ad79-593055f705a0",
+            "colId": "c22aa36c-96ab-4c38-8ea2-72929bbbb4eb",
+            "containerId": "",
+            "name": "Mostrar articulo por ID",
+            "url": "https://service-fastlearn.onrender.com/articles/1",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-07-17T15:28:07.911Z",
+            "modified": "2024-07-17T15:28:07.911Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxMywiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAZ21haWwuY29tIiwicm9sIjoidGVhY2hlciIsImlhdCI6MTcyMTIyOTM4OSwiZXhwIjoxNzIxMjM2NTg5fQ.PoNKNTDOQOdDoY8Ow1o2Pli_0_1-5XtL-oV_TkdHNPs"
+                }
+            ]
+        }
+    ],
+    "ref": "kHVp_StM3k9yXW8u3BjMq6kMlDpqzNgQrUEcgemRzZnX1eVJN9ZN1tJ-dFypRIBjZM0D_8OUTgp5NbjKgNKdvQ"
+}

@@ -1,0 +1,123 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "rutas backend usuarios",
+    "collectionId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+    "dateExported": "2024-07-17T16:11:39.188Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "e0eefbf9-e727-4bb2-843b-11ca90d6a786",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Modificar informacion usuario Backend",
+            "url": "https://service-fastlearn.onrender.com/cursos/",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-08T02:46:51.435Z",
+            "modified": "2024-07-17T12:47:31.527Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjo2LCJjb3JyZW8iOiJqZXJvbmltby4xMDg3QGdtYWlsLmNvbSIsInJvbCI6InN0dWRlbnQiLCJpYXQiOjE3MjEyMTk4NzQsImV4cCI6MTcyMTIyNzA3NH0.SC6pgUDG5bhf6ugDmt8QkCKvhI29jPw8FV8zxlQx-84"
+                }
+            ]
+        },
+        {
+            "_id": "e2fc5be7-63c3-4414-ba61-1d6e021e015f",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Modificar rol usuario Backend",
+            "url": "https://service-fastlearn.onrender.com/rol",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-07-08T02:47:13.770Z",
+            "modified": "2024-07-08T02:47:13.770Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjozNiwiY29ycmVvIjoiZGFuaWVsYUBnbWFpbC5jb20iLCJyb2wiOiJudWxsIiwiaWF0IjoxNzIwMjA4MDcxLCJleHAiOjE3MjAyMTUyNzF9.7kh7-AFGlgfe1bHDetFiz-txfctR1MYLkBMO9iFNp3U"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"rol\": \"student\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b246ca6c-3956-4b58-a638-857250178b1c",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Obtener usuario ID Backend",
+            "url": "https://service-fastlearn.onrender.com/usuario/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-07-08T02:47:34.545Z",
+            "modified": "2024-07-16T03:30:26.140Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxLCJjb3JyZW8iOiJhZ3VzdGluLmxvcGV6MjYwNkBnbWFpbC5jb20iLCJyb2wiOiJ0ZWFjaGVyIiwiaWF0IjoxNzIxMDk3MjAzLCJleHAiOjE3MjExMDQ0MDN9.Z51rtGgts71xBT4Ww-DZlXb6pM842vIz5ZPqyEyaRnY"
+                }
+            ]
+        },
+        {
+            "_id": "9917ca16-f7d6-462e-9aad-d4d2fd2e7966",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Loguear usuario Backend",
+            "url": "https://service-fastlearn.onrender.com/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-07-08T02:47:49.459Z",
+            "modified": "2024-07-08T02:47:49.459Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxOCwibm9tYnJlIjoiRGFuaWVsYSIsImNvcnJlbyI6ImRhbmllbGFAZ21haWwuY29tIiwiaWF0IjoxNzIwMDY0MzE1LCJleHAiOjE3MjAwNzE1MTV9.AEYT61CMymbJgzGZUfD2xs-FTpSdta8UH_pi1L_6dI8"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"daniela@gmail.com\",\n  \"contrasena\": \"12345\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "1ba86d48-f983-4b80-85da-1d474f1dc6e1",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Insertar usuario Backend",
+            "url": "https://service-fastlearn.onrender.com/usuario",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-07-08T02:48:03.288Z",
+            "modified": "2024-07-10T06:01:40.516Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Agustin Penagos\",\n  \"correo\": \"agustin.lopez@gmail.com\",\n  \"contrasenaPlain\": \"12345\",\n  \"fechaNacimiento\": \"2004-06-26\",\n  \"telefono\": \"301-621-7959\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "f13ea4c7-5813-4a9c-84cd-790c79362041",
+            "colId": "2a7dc17a-6108-46b3-a819-385778dea91b",
+            "containerId": "",
+            "name": "Mostrar todos los usuarios Backend",
+            "url": "https://service-fastlearn.onrender.com/usuario/",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-07-08T08:33:59.293Z",
+            "modified": "2024-07-17T04:41:08.900Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF9hZG1pbiI6MSwiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAYWRtaW4uY29tIiwicm9sIjoiYWRtaW4iLCJpYXQiOjE3MjExOTEwMTcsImV4cCI6MTcyMTE5ODIxN30.9WrkTrkB6fYaPKk_bbXGBzDo65uWAI-BS6qSLUtSxxI"
+                }
+            ]
+        }
+    ],
+    "ref": "p78Iq9WmWDJ76hUx10eKPYpbnusbkkSz9CocjuG1dccZUOFMChSDIq78nKAyM3k-GOp2-9DzJYN91yXbUJX9aw"
+}

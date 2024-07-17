@@ -1,0 +1,110 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "rutas backend cursos",
+    "collectionId": "152fd2ff-bfdc-4a40-8bbf-7cd71b44440e",
+    "dateExported": "2024-07-17T16:11:34.733Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4b840d06-4f53-41b0-8ac8-188c11f7ab25",
+            "colId": "152fd2ff-bfdc-4a40-8bbf-7cd71b44440e",
+            "containerId": "",
+            "name": "Mostrar todos los cursos",
+            "url": "https://service-fastlearn.onrender.com/cursos/",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-17T15:14:07.247Z",
+            "modified": "2024-07-17T15:14:07.247Z",
+            "headers": []
+        },
+        {
+            "_id": "2fbe7f70-75c5-4dc3-99bd-1cefc2dbb0ea",
+            "colId": "152fd2ff-bfdc-4a40-8bbf-7cd71b44440e",
+            "containerId": "",
+            "name": "Insertar cursos",
+            "url": "https://service-fastlearn.onrender.com/cursos/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-17T15:15:07.498Z",
+            "modified": "2024-07-17T15:17:26.936Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer"
+                }
+            ],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "titulo",
+                        "value": "Prueba"
+                    },
+                    {
+                        "name": "descripcion",
+                        "value": "descripcion"
+                    },
+                    {
+                        "name": "linkCurso",
+                        "value": "www.youtube.com"
+                    },
+                    {
+                        "name": "tagsCurso",
+                        "value": "#prueba"
+                    },
+                    {
+                        "name": "categoria",
+                        "value": "nivel 1"
+                    }
+                ],
+                "files": [
+                    {
+                        "name": "video",
+                        "value": "c:\\Users\\Agustin\\Videos\\Captures\\Bienvenido a FastLearn - Google Chrome 2024-05-05 13-22-03.mp4"
+                    },
+                    {
+                        "name": "",
+                        "value": "c:\\Users\\Agustin\\Downloads\\preview.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "56f303af-9649-49f5-831e-56b102db0759",
+            "colId": "152fd2ff-bfdc-4a40-8bbf-7cd71b44440e",
+            "containerId": "",
+            "name": "Eliminar cursos por id",
+            "url": "https://service-fastlearn.onrender.com/cursos/69",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-07-17T15:19:46.389Z",
+            "modified": "2024-07-17T15:19:46.389Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c3VhcmlvIjoxMywiY29ycmVvIjoiYWd1c3Rpbi5sb3BlejI2MDZAZ21haWwuY29tIiwicm9sIjoidGVhY2hlciIsImlhdCI6MTcyMTIyOTM4OSwiZXhwIjoxNzIxMjM2NTg5fQ.PoNKNTDOQOdDoY8Ow1o2Pli_0_1-5XtL-oV_TkdHNPs"
+                }
+            ]
+        },
+        {
+            "_id": "0c89747b-0043-4438-bfad-0a7ce8f6c45c",
+            "colId": "152fd2ff-bfdc-4a40-8bbf-7cd71b44440e",
+            "containerId": "",
+            "name": "Mostrar cursos ID ",
+            "url": "https://service-fastlearn.onrender.com/cursos/1",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-07-17T15:21:23.285Z",
+            "modified": "2024-07-17T15:21:23.285Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer https://service-fastlearn.onrender.com/cursos/"
+                }
+            ]
+        }
+    ],
+    "ref": "NMr9NYMXsYR2NjVGpNiRM5TTprk9ioanKPIamtNbI57rBVJHmYmcVn3kbz9GMIYrs32a93uIPeGpvPe9iZ8IzQ"
+}
