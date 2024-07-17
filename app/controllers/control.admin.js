@@ -16,6 +16,20 @@ const mostrarAdmins = async (req, res ) =>{
       }
 }
 
+const mostrarAdmin = async (req, res ) =>{
+  const id = req.params['id'];
+
+  try {
+      const respuesta = await conexion.query(`CALL sp_mostraradmin(${id})`);
+      return res.status(200).json(respuesta[0]);
+    } catch (error) {
+      console.error("Error al mostrar cursos:", error);
+      return res.status(500).json({
+        message: "Error en el servidor, por favor inténtalo de nuevo más tarde",
+      });
+    }
+}
+
 const logueoAdmin = async (req, res) => {
     const { correo, contrasena } = req.body;
 
@@ -54,4 +68,4 @@ const logueoAdmin = async (req, res) => {
   }
 }
 
-export {mostrarAdmins, logueoAdmin}
+export {mostrarAdmin, mostrarAdmins, logueoAdmin}
