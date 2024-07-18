@@ -37,7 +37,7 @@ var outputFile = './swagger-output.json';
  * Lista de rutas a ser incluidas en la documentación.
  * @type {Array<string>}
  */
-var routes = ['../routes/routes.main.js', '../routes/routes.user.js', '../routes/routes.courses.js'];
+var routes = ['../routes/routes.main.js', '../routes/routes.user.js', '../routes/routes.courses.js', '../routes/routes.articulos.js', '../routes/routes.admin.js'];
 
 /**
  * Generar la documentación con ayuda de Swagger.
